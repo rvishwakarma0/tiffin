@@ -1,0 +1,29 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+        
+        <div class="row">
+                {% for product in products %}
+                <div class="col-lg-4">
+                        <img class="thumbnail" src="{{product.imageURL}}">
+                        <div class="box-element product">
+                                <p style="display: inline-block; float: right">{{product.rating}}&#9734;</p>
+                                <h4><strong>{{product.name}}</strong> </h4>
+                                <h6><i>by <a href="vendor/{{product.vendor.id}}">{{product.vendor.name}}</a></i></h6>
+                                <hr>
+                                <p>{{product.description}}</p>
+                                <hr>
+                                <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                                <!--a class="btn btn-outline-success" href="tiffin/{{product.id}}">view</a-->
+                                <h4 style="display: inline-block; float: right">₹{{product.price|floatformat:2}}</h4>
+                        </div>
+                </div>
+                {% endfor %}
+        </div>  
+
+
+
+{% endblock content %}
+
+
+
